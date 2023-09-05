@@ -1,0 +1,8 @@
+@media print {
+  .print-no {
+      display: none;
+  }
+  .d_logo{
+  display: inline-block !important;
+  }
+}

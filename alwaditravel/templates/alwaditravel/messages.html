@@ -1,0 +1,21 @@
+{% load static %}
+<!-- Messages -->
+{%for message in messages%}
+{% if message.tags == 'error' %}
+<script src="{% static 'alwaditravel/js/sweetalert.min.js' %}"></script>
+<script>
+        var m = "{{ message|safe }}";
+        swal("Error !", m, "error")
+    </script>
+{% endif %}
+{% if message.tags == 'success' %}
+<script src="{% static 'alwaditravel/js/sweetalert.min.js' %}"></script>
+<script>
+        var m = "{{ message|safe }}";
+        swal("Perfect !", m, "success")
+    </script>
+{% endif %}
+{% endfor%}
+
+
+

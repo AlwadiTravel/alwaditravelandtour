@@ -1,0 +1,158 @@
+{% extends "alwaditravel/base.html" %}
+{%block title%}
+Make Appointment
+{%endblock%}
+{% block content %}
+<div class="container px-4 py-4 ">
+    <div class="mt-3 mb-5 p-3 bg-danger text-white rounded text-center">
+        <h2>Appointment Form</h2>
+    </div>
+    {{form.errors|striptags}}
+
+    <div class="row mb-3">
+
+        <div class="col-lg-8">
+            <div class="col">
+                <div class="card mb-2">
+                    <div class="card-header py-2">
+                        <p class=" m-0 fw-bolder d-flex justify-content-between"><span>Appointment</span><span> حجز الموعد</span></p>
+                    </div>
+                    <div class="card-body small" id="box">
+                        <form action="{% url 'appointment-make' %}" enctype="multipart/form-data" method="POST"
+                              onsubmit="validate(this)">
+                            {% csrf_token %}
+                            <div class="row">
+                                {% for field, a_field in gg %}
+                                {% if forloop.counter0|divisibleby:4 %}
+                                {% if forloop.counter0 == 0 %}
+                                <div class="col-md-6">
+                                    {% else %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% endif %}
+                                    {% endif %}
+                                    {% if field.label != 'Queue number' %}
+                                    <div class="form-group my-1 "><label class="d-flex mb-1 justify-content-between">
+                                        <strong><span>{{field.label}}</span></strong><strong><span>{{a_field}}</span></strong></label>
+                                        {% endif %}
+                                        {{field}}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+
+                                <div align="center" class=" mt-2 ">
+                                    <button class="btn bg-warning btn-md text-white w-25" type="submit">Save</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card border-warning ">
+                    <div class="card-header bg-danger text-white">
+                        <h3 class="mt-2">Remarks</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Fill the form with care and correct information.
+                            </li>
+                            <li>Make an appointment for every individual.
+                            </li>
+                            <li>visa document
+                                (document number starts with 700)
+                            </li>
+                            <li>A certificate of proof of lineage certified by the Eritrean Foreign Ministry or the
+                                Saudi Foreign Ministry, such as (marriage contract, birth certificate, deed proving
+                                lineage from the court)
+                            </li>
+                            <li>Passport copy of the traveler
+                            </li>
+                            <li>A copy of the entry stamp for non-Eritreans
+                            </li>
+                            <li>Original passport valid for more than six months
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fw-bold fs-5" dir="rtl" style="font-family: Tajawal;">
+                        <h3 class="m-2">ملاحظات</h3>
+                        <ul>
+                            <li>مستند تأشيرة
+                                (رقم المستند يبدأ بـ 700)
+                            </li>
+                            <li>
+                                شهادة اثبات نسب مصدقة من الخاارجية الارترية او الخارجية السعودية مثل (عقد زواج شهادة
+                                ميلاد صك اثبات
+                                نسب من المحكمة)
+
+                            </li>
+                            <li>صورة جواز السفر للمسافر
+                            </li>
+                            <li>صورة ختم الدخول لغير الإرتريين
+                            </li>
+                            <li>أصل الجواز ساري الصلاحية أكثر من ستة أشهر
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    {% include 'alwaditravel/messages.html' %}
+    {% endblock %}
+
+    {% block script %}
+    <script type="text/javascript">
+        var unavailableDates = [
+        {% for h in holidays%}
+          "{{h.h_date|date:'Y-n-j'}}",
+        {% endfor %}
+        {% for c in apt_count%}
+          "{{c.apt_date|date:'Y-n-j'}}",
+        {% endfor %}
+        ];
+
+        function nationalDays(date) {
+            dmy = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() ;
+            console.log(dmy)
+            if ($.inArray(dmy, unavailableDates) == -1) {
+                return [true, ""];
+            } else {
+                return [false, "", "Unavailable"];
+            }
+        }
+
+        $(function() {
+            $("#id_apt_date").datepicker({
+                minDate: '0',
+                dateFormat: 'yy-mm-dd',
+                beforeShowDay: noWeekendsOrHolidays
+
+            });
+            $("#id_apt_date").keyup(function(){
+                 $("#id_apt_date").val("");
+            });
+
+        });
+            function noWeekendsOrHolidays(date) {
+        var noWeekend = $.datepicker.noWeekends(date);
+        if (noWeekend[0]) {
+            return nationalDays(date);
+        } else {
+            return noWeekend;
+        }
+    }
+    </script>
+
+
+    {% endblock %}
+
+

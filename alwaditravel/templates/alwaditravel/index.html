@@ -1,0 +1,182 @@
+{% extends "alwaditravel/base.html" %}
+{% load static %}
+{%block title%}
+Alwadi Travel and Tour
+{%endblock%}
+{% block content %}
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to ALWADI Tour and Travel
+                Agency</h1>
+            <p class="lead">Discover the world with us! Our company provides exceptional travel experiences for
+                adventurers
+                seeking authentic and life-changing trips. Let us plan your next getaway.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a class="btn bg-warning btn-lg px-4 me-md-2" type="button" href="#services">Learn More</a>
+                <a class="btn btn-outline-secondary btn-lg px-4" href="{% url 'appointment-make' %}" type="button">Book
+                    Appointment</a>
+            </div>
+        </div>
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img alt="Bootstrap Themes"
+                 class="d-block mx-lg-auto img-fluid rounded shadow-lg bg-body d-none d-sm-block" loading="lazy"
+                 src="{% static 'alwaditravel/img/hero-master2.jpg' %}" width="500">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+</div>
+
+<div class="container marketing">
+    <section id="services">
+        <h2 class="text-center mt-3 mb-5 px-4 py-5 fs-2 fw-bold">Valley Of Services</h2>
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-md">
+                    <img alt="Ticket Sales" class="card-img-top"
+                         src="{% static 'alwaditravel/img/ticket-sale.jpg' %}">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Ticket Sales</h2>
+                        <p class="card-text text-center">Are you looking for a great deal on your next flight? Don’t miss this opportunity to save money and time on your
+                            travel plans. Book your flight with Travel Agency today and enjoy the journey of your
+                            dreams!</p>
+                    </div>
+                </div>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-md">
+                    <img alt="Visa Processing" class="card-img-top"
+                         src="{% static 'alwaditravel/img/visa-processing.jpg' %}">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Visa Services</h2>
+                        <p class="card-text text-center">Allow Alwadi
+                            Travel Agency to efficiently handle this process on your behalf. Our services guarantee a
+                            quick, effortless, and cost-effective visa processing service for all countries.</p>
+                    </div>
+                </div>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-md">
+                    <img alt="Visa Processing" class="card-img-top"
+                         src="{% static 'alwaditravel/img/umra-agent.jpg' %}">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Umra Agent</h2>
+                        <p class="card-text text-center">Choose Alwadi Travel Agency, the best
+                            Umra facilitator. With 10+ years of experience, we're the top facilitator in the region.
+                            Partnered with the Ministry of Hajj and Umra, we offer the best prices and packages.Book today for a hassle-free and memorable
+                            experience./p>
+                    </div>
+                </div>
+
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-md">
+                    <img alt="Visa Processing" class="card-img-top"
+                         src="{% static 'alwaditravel/img/tour-packages.jpg' %}">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Tour Packages</h2>
+                        <p class="card-text text-center">Alwadi Travel Agency and Tour offers diverse tour packages. Visit historical sites like Adulis and
+                            Qohaito, and explore the Danakil Depression and Red Sea
+                            coastline. Experienced guides provide insights into Eritrea's history, culture, and natural
+                            wonders for an unforgettable journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.row -->
+
+    </section>
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Beautiful Asmara<br>
+                <span class="text-muted">It’ll blow your mind.</span></h2>
+            <p class="lead">Greate place, filled with love and unforgettable memories!!!</p>
+        </div>
+        <div class="col-md-5 rounded">
+
+            <img alt="Ticket Sales" class="card-img-top rounded" height="500"
+                 src="{% static 'alwaditravel/img/asmara.jpg' %}"
+                 >
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Three Seasons In Two Hours<br><span
+                    class="text-muted">Travel with Alwadi Travel and
+                Tour to see for yourself.</span></h2>
+            <p class="lead">In just two hours experience more seasons than you can imagine. </p>
+        </div>
+        <div class="col-md-5 order-md-1">
+
+            <img alt="Ticket Sales" class="card-img-top rounded" height="500"
+                 src="{% static 'alwaditravel/img/two-seasons.jpg' %}"
+                >
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Historic Eritrea <br><span class="text-muted">Simply Magnificent</span></h2>
+            <p class="lead">This is the place where the ancient and the modern survive together.</p>
+        </div>
+        <div class="col-md-5">
+            <img alt="Ticket Sales" class="card-img-top rounded" height="500"
+                 src="{% static 'alwaditravel/img/Eritrean_Railway.jpg' %}"
+                >
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <section id="contact">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <h1 class="mb-5 text-center">Our Location</h1>
+            <div class="col-lg-5 col-md-12 col-sm-12">
+                <iframe allowfullscreen=""
+                        height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d961.9341767661613!2d38.9431684473685!3d15.336537278685885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTXCsDIwJzExLjMiTiAzOMKwNTYnMzQuNCJF!5e0!3m2!1sen!2s!4v1693637059930!5m2!1sen!2s"
+                        style="border:0;" width="100%"
+                        ></iframe>
+            </div>
+            <div class="col-lg-6">
+                <img alt="Ticket Sales" class="card-img-top rounded" height="450"
+                     src="{% static 'alwaditravel/img/location.jpg' %}"
+                >
+            </div>
+        </div>
+        <div class="container px-4 px-lg-5 py-5">
+            <div class="row  justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <h2 class="mt-0">Let's Get In Touch!</h2>
+                    <hr class="divider"/>
+                    <p class="text-muted mb-5" i18next-key="q">
+                        If you have any questions? Send us a messages, and we will get
+                        back to you as soon as possible!
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
+
+
+{% endblock %}

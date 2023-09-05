@@ -1,0 +1,172 @@
+{% extends "alwaditravel/base.html" %}
+
+{% load static %}
+{% block content %}
+
+
+<div class="container p-5" id="content">
+
+    <div class="p-3 bg-danger text-white rounded text-center print-no">
+        <h2>Appointment Detail</h2>
+    </div>
+
+    <table class="table table-borderless mb-3">
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td align="center" rowspan="2">
+
+                <img alt="Alwadi Logo" src="{% static 'alwaditravel/img/logo.png' %}"
+                     width="15%" class="d_logo" style="display: none">
+
+            </td>
+            <td align="right">
+                &nbsp;
+            </td>
+        </tr>
+
+
+    </table>
+
+    <table class="table table-borderless fw-bolder">
+
+        <tr>
+            <td>
+                Queue Number : {{object.queue_number}} <br><span class="fw-bold" style="font-family: Tajawal">رقم قائمة الانتظار</span>
+            </td>
+
+            <td align="right">
+                Appointment Number : {{object.id}} <br><span class="fw-bold" style="font-family: Tajawal"> رقم الهوية للموعد</span>
+            </td>
+        </tr>
+    </table>
+
+    <hr class="bg-dark border-2 border-top border-dark w-100 m-auto "/>
+    <hr class="bg-dark border-2 border-top border-dark w-100 m-auto "/>
+    <table class="table table-borderless my-3">
+
+        <tr>
+            <td>
+                Full Name : <span class="fw-bold" style="font-family: Tajawal">الاسم الكامل</span>
+            </td>
+            <td>
+                <input class="form-control " disabled value="{{object.FullName}}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Other Name : <span class="fw-bold" style="font-family: Tajawal">اسم العائلة</span>
+            </td>
+            <td>
+                <input class="form-control " disabled value="{{object.other_name}}"/>
+
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                Passport Number : <span class="fw-bold" style="font-family: Tajawal">رقم جواز السفر</span>
+            </td>
+            <td>
+                <input class="form-control " disabled value="{{object.passport_number}}"/>
+
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                Appointment Date :<span class="fw-bold" style="font-family: Tajawal"> تاريخ الموعد</span>
+            </td>
+            <td>
+                <input class="form-control " disabled value="{{object.apt_date}}"/>
+
+            </td>
+
+        </tr>
+    </table>
+
+    <hr class="bg-dark border-2 border-top border-dark w-100 m-auto"/>
+    <div class="fs-5">
+        <h3 class="mt-2">Remarks</h3>
+        <ul>
+            <li>visa document (document number starts with 700)</li>
+            <li>visa document (document number starts with 87)</li>
+            <li>A certificate of proof of lineage certified by the Eritrean Foreign Ministry or the
+                Saudi Foreign Ministry, such as (marriage contract, birth certificate, deed proving
+                lineage from the court)
+            </li>
+            <li>Passport copy of the traveler
+            </li>
+            <li>A copy of the entry stamp for non-Eritreans
+            </li>
+            <li>Original passport valid for more than six months
+            </li>
+
+        </ul>
+        <div class="fw-bold fs-5" dir="rtl" style="font-family: Tajawal;">
+            <h3 class="mt-2">ملاحظات</h3>
+            <ul>
+                <li>مستند تأشيرة
+                    (رقم المستند يبدأ بـ 700)
+                </li>
+                <li>مستند تأشيرة
+                    (رقم المستند يبدأ بـ 87)
+                </li>
+                <li>
+                    شهادة اثبات نسب مصدقة من الخاارجية الارترية او الخارجية السعودية مثل (عقد زواج شهادة ميلاد صك اثبات
+                    نسب من المحكمة)
+
+                </li>
+                <li>صورة جواز السفر للمسافر
+                </li>
+                <li>صورة ختم الدخول لغير الإرتريين
+                </li>
+                <li>أصل الجواز ساري الصلاحية أكثر من ستة أشهر
+                </li>
+            </ul>
+
+        </div>
+
+
+    </div>
+    <hr class="bg-dark border-2 border-top border-dark w-100 m-auto"/>
+</div>
+
+<div class="col text-center mt-2 mb-5 print-no">
+
+    <a class="btn btn-outline-secondary mt-2 w-25 "
+       href="{% url 'home' %}">
+        Home</a>
+    <button class="btn bg-danger mt-2 w-25 text-white" onclick="printDocument('content')">
+        <i class="fas fa-pdf"></i>Print
+    </button>
+
+</div>
+
+{% include 'alwaditravel/messages.html' %}
+{% endblock %}
+
+{% block script%}
+
+<script>
+    function printDocument(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+
+
+
+}
+
+
+</script>
+
+{% endblock %}
+
+
