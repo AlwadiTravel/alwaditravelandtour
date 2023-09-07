@@ -1,17 +1,24 @@
 from datetime import datetime
+from django.core.exceptions import ValidationError
 
 from django.db import models
 
-
+def validate_file_size(value):
+    filesize= value.size
+    
+    if filesize > 262144:
+        raise ValidationError("The maximum file size that can be uploaded is 256kb")
+    else:
+        return value
 # Create your models here.
 class Appointment(models.Model):
     first_name = models.CharField(max_length=30, blank=False, null=False)
     second_name = models.CharField(max_length=30, blank=False, null=False)
     last_name = models.CharField(max_length=30, blank=False, null=False)
     other_name = models.CharField(max_length=30, blank=False, null=False)
-    passport_number = models.IntegerField(blank=False, null=False)
-    passport_copy = models.ImageField(upload_to='uploads')
-    invitation_letter = models.FileField(upload_to='uploads')
+    passport_number = models.CharField(max_length=30, blank=False, null=False)
+    passport_copy = models.ImageField(upload_to='uploads', validators=[validate_file_size])
+    invitation_letter = models.FileField(upload_to='uploads',validators=[validate_file_size])
     apt_date = models.DateField(verbose_name="Appointment Date")
     queue_number = models.IntegerField(default=-1)
 

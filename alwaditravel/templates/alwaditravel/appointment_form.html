@@ -7,7 +7,11 @@ Make Appointment
     <div class="mt-3 mb-5 p-3 bg-danger text-white rounded text-center">
         <h2>Appointment Form</h2>
     </div>
-    {{form.errors|striptags}}
+    {% if form.errors|striptags %}
+    <div class="alert alert-danger" role="alert">
+        {{form.errors}}
+    </div>
+    {% endif %}
 
     <div class="row mb-3">
 
@@ -80,6 +84,8 @@ Make Appointment
                     <div class="fw-bold fs-5" dir="rtl" style="font-family: Tajawal;">
                         <h3 class="m-2">ملاحظات</h3>
                         <ul>
+                            <li>املأ النموذج بعناية ومعلومات صحيحة.
+                            </li>
                             <li>مستند تأشيرة
                                 (رقم المستند يبدأ بـ 700)
                             </li>
