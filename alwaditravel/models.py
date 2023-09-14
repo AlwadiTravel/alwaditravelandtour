@@ -5,7 +5,7 @@ from django.db import models
 
 def validate_file_size(value):
     filesize= value.size
-    
+
     if filesize > 262144:
         raise ValidationError("The maximum file size that can be uploaded is 256kb")
     else:
@@ -43,5 +43,6 @@ class Holidays(models.Model):
     name = models.CharField(max_length=60)
     h_date = models.DateField()
 
-    def chech_holiday(self):
-        AppointmentSetting.objects.filter(apt_date=self.h_date).update(apt_status=False)
+    def __str__(self):
+        """String for representing the Model object."""
+        return str(self.name)
